@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController controller;
 
-    public float speed = 12f;
+    //public float speed = 12f;
 
     float timeStamp = 0;
 
@@ -31,28 +31,30 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        boost = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //TODO: change from H/V to keydown inputs?
         xInput = Input.GetAxis("Horizontal");
         zInput = Input.GetAxis("Vertical");
 
         //boost = Input.GetKeyDown(KeyCode.Space);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            boost = true;
-            boostVelocity = new Vector3(rb.velocity.x * 2.5f, rb.velocity.y, rb.velocity.z * 2.5f);
-        }
+        
 
         if(boost && boostCounter > 5)
         {
             boost = false;
             boostCounter = 0;
             
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            boost = true;
+            boostVelocity = new Vector3(rb.velocity.x * 2.5f, rb.velocity.y, rb.velocity.z * 2.5f);
         }
 
 
@@ -61,11 +63,11 @@ public class PlayerMovement : MonoBehaviour
         //float z = Input.GetAxis("Vertical");
 
 
-            //Vector3 move = transform.up * -x + transform.right * -z;
+        //Vector3 move = transform.up * -x + transform.right * -z;
 
-            //controller.Move(move * speed * Time.deltaTime);
-            //pad.localPosition = 
-            //transform.localPosition = transform.localPosition;
+        //controller.Move(move * speed * Time.deltaTime);
+        //pad.localPosition = 
+        //transform.localPosition = transform.localPosition;
 
     }
 
